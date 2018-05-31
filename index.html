@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script src='move3.js'></script>
+<style>
+	*{margin:0; padding:0;}
+	body{ height:2000px;}
+	.box{
+		width:600px; height: 600px; margin:50px auto; position: relative; border:solid 1px #ccc; 
+		position: fixed; left:50%; margin-left:-300px; overflow:hidden;
+	}
+	#head{
+		width:52px; height: 60px; background: url(images/head.png) no-repeat;
+		position: absolute;
+		left:250px;top:-100px; 
+	}
+	#body{
+		width:127px; height: 240px; background: url(images/body.png) no-repeat;
+		position: absolute;
+		left:-243px; top:10px;z-index: 10;
+	}
+	#left1{
+		width:166px; height:208px; background: url(images/left1.png) no-repeat;
+		position: absolute;
+		left:-200px; top:20px;
+		z-index: 100;
+	}
+	#right1{
+		width:192px; height: 260px; background: url(images/right1.png) no-repeat;
+		position: absolute;
+		left:636px; top:-34px;
+		z-index: 100;
+	}
+	#left{
+		width:192px; height: 400px; background: url(images/left.png) no-repeat;
+		position: absolute;
+		left:-200px; top:162px;
+		z-index: 100;
+	}
+	#right{
+		width:192px; height: 400px; background: url(images/right.png) no-repeat;
+		position: absolute;
+		left:621px; top:171px;
+		z-index: 100;
+	}
+</style>
+<script>
+window.onload=function()
+{
+	var oHead = document.getElementById('head');
+	var oBody = document.getElementById('body');
+	var oLeft1 = document.getElementById('left1');
+	var oRight1 = document.getElementById('right1');
+	var oLeft = document.getElementById('left');
+	var oRight = document.getElementById('right');
+	window.onscroll=function(){
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		if(scrollTop > 100)
+		{
+			startMove(oHead,{'top':'0'});
+		}
+		if(scrollTop > 200){
+
+			startMove(oBody,{'left':'243'});
+		}
+		if(scrollTop > 250){
+		 	startMove(oLeft1,{'left':'100'});
+		 	startMove(oRight1,{'left':'336'});
+		}
+
+		if(scrollTop > 300){
+		  	startMove(oLeft,{'left':'82'});
+		 	startMove(oRight,{'left':'321'});
+		}
+		// }else if(scrollTop > 250){
+		// 	startMove(oLeft1,{'left':'100'});
+		// 	startMove(oRight1,{'left':'336'});
+		// }else if(scrollTop > 500){
+		// 	startMove(oLeft,{'left':'82'});
+		// 	startMove(oRight,{'left':'321'});
+		// }
+		console.log(scrollTop)
+	}
+
+}
+</script>
+</head>
+<body>
+	<div class='box'> 
+		<div id='head'></div>
+		<div id='left1'></div>
+		<div id='right1'></div>
+		<div id='left'></div>
+		<div id='right'></div>
+		<div id='body'></div>
+	</div>
+</body>
+</html>
